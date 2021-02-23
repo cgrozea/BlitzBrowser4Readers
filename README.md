@@ -1,21 +1,23 @@
-# Lightning Browser [![Build Status](https://travis-ci.org/anthonycr/Lightning-Browser.svg?branch=master)](https://travis-ci.org/anthonycr/Lightning-Browser)
+# Blitz Browser 4 Readers
+
+## Paginated browser without animations and with high contrast mono rendering based on the Lightning Browser 
+
+#### Instant PageUp/PageDn, no more unreadable grays, no more disturbing screen animations, no need to scroll!
 
 #### Speed, Simplicity, Security
-![](launcher_icon_small.png)
 
 #### Download
-[<img src="https://f-droid.org/badge/get-it-on.png"
-      alt="Get it on F-Droid"
-      height="80">](https://f-droid.org/app/acr.browser.lightning) [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" 
-alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=acr.browser.lightning)
-
-#### Master Branch
-* [![Build Status](https://travis-ci.org/anthonycr/Lightning-Browser.svg?branch=master)](https://travis-ci.org/anthonycr/Lightning-Browser)
-
-#### Dev Branch
-* [![Build Status](https://travis-ci.org/anthonycr/Lightning-Browser.svg?branch=dev)](https://travis-ci.org/anthonycr/Lightning-Browser)
+For now you have to build it...
 
 #### Features
+* Customized for Android eInk eReaders like the Tolino Shine 3 with rooted firmware
+
+* Increase contrast and monocromatic
+
+* PageDn by touching the bottom right corner
+
+* PageUp by touching the top right corner of the page content 
+
 * Bookmarks
 
 * History
@@ -52,15 +54,14 @@ alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/det
 * Please add translations/translation fixes as you see need
 
 #### Contributing
-* [The Trello Board](https://trello.com/b/Gwjx8MC3/lightning-browser)
 * Contributions are always welcome
 * Make pull requests into the `dev` branch.
 
 #### License
 ```
-Copyright 2014 Anthony Restaino
+Copyright 2021 cgrozea for the Blitz Browser
 
-Lightning Browser
+Copyright 2014 Anthony Restaino for the Lightning Browser
 
    This Source Code Form is subject to the terms of the 
    Mozilla Public License, v. 2.0. If a copy of the MPL 
