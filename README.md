@@ -10,9 +10,9 @@
 For now you have to build it...
 
 #### Features
-* Customized for Android eInk eReaders like the Tolino Shine 3 with rooted firmware
+* Customized for Android(tm) eInk(tm) eReaders(tm) like the Tolino Shine 3 Customized like in this [guide](https://www.mobileread.com/forums/showthread.php?t=327186)
 
-* Increase contrast and monocromatic
+* Increased contrast and monocromatic
 
 * PageDn by touching the bottom right corner
 
