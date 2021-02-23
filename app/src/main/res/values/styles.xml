@@ -66,6 +66,7 @@
 
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
+        <item name="android:textSize">32dp</item>
 
     </style>
 

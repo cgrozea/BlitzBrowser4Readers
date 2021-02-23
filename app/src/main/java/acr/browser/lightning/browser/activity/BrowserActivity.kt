@@ -1192,7 +1192,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     )
                 }
             }
-            animation.duration = 300
+            animation.duration = 0 //eInk
             toolbar_layout.startAnimation(animation)
         }
     }
@@ -1621,6 +1621,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      * incorrect so that the animation can happen correctly.
      */
     override fun hideActionBar() {
+        return //keep it visible
         if (isFullScreen) {
             if (toolbar_layout == null || content_frame == null)
                 return
@@ -1634,7 +1635,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                         setWebViewTranslation(height - trans)
                     }
                 }
-                hideAnimation.duration = 250
+                hideAnimation.duration = 0//eink
                 hideAnimation.interpolator = BezierDecelerateInterpolator()
                 content_frame.startAnimation(hideAnimation)
             }
@@ -1667,7 +1668,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                         setWebViewTranslation(trans)
                     }
                 }
-                show.duration = 250
+                show.duration = 0 //eInk
                 show.interpolator = BezierDecelerateInterpolator()
                 content_frame.startAnimation(show)
             }

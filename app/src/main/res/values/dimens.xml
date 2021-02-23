@@ -15,7 +15,7 @@
 
     <dimen name="navigation_drawer_max_width">300dp</dimen>
 
-    <dimen name="toolbar_height_portrait">56dp</dimen>
+    <dimen name="toolbar_height_portrait">96dp</dimen>
     <dimen name="toolbar_height_landscape">52dp</dimen>
     <dimen name="navigation_drawer_minimum_space">56dp</dimen>
 
@@ -23,4 +23,5 @@
     <dimen name="desktop_tab_height">30dp</dimen>
 
     <dimen name="progress_bar_height">2dp</dimen>
+
 </resources>

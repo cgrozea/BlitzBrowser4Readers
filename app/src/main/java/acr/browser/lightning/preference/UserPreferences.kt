@@ -130,12 +130,12 @@ class UserPreferences @Inject constructor(
      * True if the browser should attempt to reflow the text on a web page after zooming in or out
      * of the page.
      */
-    var textReflowEnabled by preferences.booleanPreference(TEXT_REFLOW, false)
+    var textReflowEnabled by preferences.booleanPreference(TEXT_REFLOW, true) //eInk default to reflow
 
     /**
      * The index of the text size that should be used in the browser.
      */
-    var textSize by preferences.intPreference(TEXT_SIZE, 3)
+    var textSize by preferences.intPreference(TEXT_SIZE, 0) //quite large for eInk
 
     /**
      * True if the browser should fit web pages to the view port, false otherwise.
@@ -167,7 +167,7 @@ class UserPreferences @Inject constructor(
     /**
      * The index of the rendering mode that should be used by the browser.
      */
-    var renderingMode by preferences.enumPreference(RENDERING_MODE, RenderingMode.NORMAL)
+    var renderingMode by preferences.enumPreference(RENDERING_MODE, RenderingMode.INCREASE_CONTRAST) //for eInk default to high contrast mono
 
     /**
      * True if third party cookies should be disallowed by the browser, false if they should be
@@ -179,7 +179,7 @@ class UserPreferences @Inject constructor(
      * True if the browser should extract the theme color from a website and color the UI with it,
      * false otherwise.
      */
-    var colorModeEnabled by preferences.booleanPreference(ENABLE_COLOR_MODE, true)
+    var colorModeEnabled by preferences.booleanPreference(ENABLE_COLOR_MODE, false) // for eInk
 
     /**
      * The index of the URL/search box display choice/
@@ -248,7 +248,7 @@ class UserPreferences @Inject constructor(
      * True if the status bar of the app should always be high contrast, false if it should follow
      * the theme of the app.
      */
-    var useBlackStatusBar by preferences.booleanPreference(BLACK_STATUS_BAR, false)
+    var useBlackStatusBar by preferences.booleanPreference(BLACK_STATUS_BAR, true)//probably better for eInk
 
     /**
      * The index of the proxy choice.

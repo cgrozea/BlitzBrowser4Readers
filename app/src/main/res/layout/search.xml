@@ -45,6 +45,7 @@
         android:textColor="?attr/autoCompleteTitleColor"
         android:textColorHint="?attr/autoCompleteUrlColor"
         android:textCursorDrawable="@null"
+        android:textSize="32dp"
         app:layout_constraintEnd_toStartOf="@+id/search_refresh"
         app:layout_constraintStart_toEndOf="@+id/search_ssl_status"
         app:layout_constraintTop_toTopOf="parent"

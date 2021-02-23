@@ -45,6 +45,7 @@ import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 import javax.inject.Inject
+import kotlin.math.floor
 
 /**
  * [LightningView] acts as a tab for the browser, handling WebView creation and handling logic, as
@@ -562,8 +563,17 @@ class LightningView(
             }
 
             RenderingMode.INCREASE_CONTRAST -> {
-                val increaseHighContrast = ColorMatrixColorFilter(increaseContrastColorArray)
-                paint.colorFilter = increaseHighContrast
+//                val increaseHighContrast = ColorMatrixColorFilter(increaseContrastColorArray)
+//                paint.colorFilter = increaseHighContrast
+                //combine high contrast with grayscale for eInk
+                val matrix = ColorMatrix()
+                matrix.set(increaseContrastColorArray)
+                val matrixGray = ColorMatrix()
+                matrixGray.setSaturation(0f)
+                val concat = ColorMatrix()
+                concat.setConcat(matrix, matrixGray)
+                val filterInvertGray = ColorMatrixColorFilter(concat)
+                paint.colorFilter = filterInvertGray
                 setHardwareRendering()
             }
         }
@@ -803,10 +813,12 @@ class LightningView(
      * get scroll events and show/hide the action bar when
      * the page is scrolled up/down.
      */
+    //changed for scrolling up/down on eInk
     private inner class TouchListener : OnTouchListener {
 
         var location: Float = 0f
         var y: Float = 0f
+        var x: Float = 0f
         var action: Int = 0
 
         @SuppressLint("ClickableViewAccessibility")
@@ -818,8 +830,26 @@ class LightningView(
             }
             action = arg1.action
             y = arg1.y
+            x = arg1.x
+            logger.log(TAG, "scroll:"+view.width.toString()+" "+view.height.toString()+" "+location.toString()+" "+y.toString())
+
+
             if (action == MotionEvent.ACTION_DOWN) {
                 location = y
+                try {
+                    if (x > 0.8 * view.width && y > view.height * 2 / 3) {
+                        view.scrollTo(0, view.scrollY + (view.height *8/ 10).toInt())
+                        gestureDetector.onTouchEvent(arg1)
+                        return true
+                    }
+
+                    if (x > 0.8 * view.width && y < view.height / 3) {
+                        view.scrollTo(0, view.scrollY - +(view.height *8/ 10).toInt())
+                        gestureDetector.onTouchEvent(arg1)
+                        return true
+                    };
+                }
+                finally  {}
             } else if (action == MotionEvent.ACTION_UP) {
                 val distance = y - location
                 if (distance > SCROLL_UP_THRESHOLD && view.scrollY < SCROLL_UP_THRESHOLD) {
@@ -927,11 +957,16 @@ class LightningView(
             0f, 0f, -1.0f, 0f, 255f, // blue
             0f, 0f, 0f, 1.0f, 0f // alpha
         )
+        //even higher contrast for eInk
         private val increaseContrastColorArray = floatArrayOf(
-            2.0f, 0f, 0f, 0f, -160f, // red
-            0f, 2.0f, 0f, 0f, -160f, // green
-            0f, 0f, 2.0f, 0f, -160f, // blue
-            0f, 0f, 0f, 1.0f, 0f // alpha
+                4.0f, 0f, 0f, 0f, -3*160f, // red
+                0f, 4.0f, 0f, 0f, -3*160f, // green
+                0f, 0f, 4.0f, 0f, -3*160f, // blue
+                0f, 0f, 0f, 1.0f, 0f // alpha
+//            2.0f, 0f, 0f, 0f, -160f, // red
+//            0f, 2.0f, 0f, 0f, -160f, // green
+//            0f, 0f, 2.0f, 0f, -160f, // blue
+//            0f, 0f, 0f, 1.0f, 0f // alpha
         )
     }
 }
